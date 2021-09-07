@@ -84,6 +84,6 @@ app.get('/', (req, res) => {
 // 	res.send("unknown routes")
 // })
 
-app.listen(8080, () => {
+app.listen(process.env.PORT || 8080, () => {
 	console.log("listening on port 3005!")
 })
