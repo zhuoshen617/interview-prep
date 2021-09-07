@@ -76,9 +76,9 @@ app.post("/addTransactions", (req, res) => {
 // 	res.send("MEOW!")
 // })
 
-// app.get('/', (req, res) => {
-// 	res.render('home.ejs')
-// })
+app.get('/', (req, res) => {
+	res.render('home.ejs')
+})
 
 // app.get('*', (req, res) => {
 // 	res.send("unknown routes")
