@@ -57,7 +57,7 @@ app.post("/createUser", (req, res) => {
 
 // curl -XPOST -d '{"clientId": "981b5ad5-9fcf-4494-b623-741e1270d933", "transactions": [{}]}' -i localhost:3005/addTransactions
 app.post("/addTransactions", (req, res) => {
-  console.log(req.body);
+  console.log("req.body", req.body);
 
   if (req.body == undefined || req.body["clientId"] == undefined
   	|| req.body["clientId"] != "981b5ad5-9fcf-4494-b623-741e1270d933" 
@@ -80,10 +80,31 @@ app.get('/', (req, res) => {
 	res.render('home.ejs')
 })
 
+app.get('/getUsers', (req, res) => {
+  console.log(req.query);
+  let obj = {
+    "clients": [
+      {
+        "clientId": "uuid1",
+        "firstName": "Lily"
+      },
+      {
+        "clientId": "uuid2",
+        "firstName": "Joe"
+      }
+    ]
+  };
+  res.send(obj);
+})
+
+app.get('/getUsersError', (req, res) => {
+  res.status(400).send({"erorrMsg" : "failed to fetch users"});
+})
+
 // app.get('*', (req, res) => {
 // 	res.send("unknown routes")
 // })
 
 app.listen(process.env.PORT || 8080, () => {
-	console.log("listening on port 3005!")
+	console.log("listening on port 8080!")
 })
